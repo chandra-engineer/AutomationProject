@@ -11,6 +11,10 @@ public class Commonmethods {
 	public static WebDriver driver;
 
 	public static void main(String[] args) throws Exception {
+		
+		System.out.println("System Execution started ");
+		
+		System.out.println(System.getProperty("os.name"));
 
 		Utility u = new Utility();
 
