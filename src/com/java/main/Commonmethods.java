@@ -18,9 +18,8 @@ public class Commonmethods {
 		
 		System.out.println(System.getProperty("os.name"));
 
-		Utility u = new Utility();
 
-		u.getPropertiesData("Dev");
+		Utility.getPropertiesData("Dev");
 		System.out.println("Execution started ");
 		launchApplication(Globalvariables.config.get("browser"), Globalvariables.config.get("url"));
 
