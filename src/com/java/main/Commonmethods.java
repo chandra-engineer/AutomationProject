@@ -1,6 +1,8 @@
 package com.java.main;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -19,9 +21,11 @@ public class Commonmethods {
 		System.out.println(System.getProperty("os.name"));
 
 
-		Utility.getPropertiesData("Dev");
+		Utility.getPropertiesData("UAT");
 		System.out.println("Execution started ");
 		launchApplication(Globalvariables.config.get("browser"), Globalvariables.config.get("url"));
+		
+		login_Into_Application(Globalvariables.config.get("Username"), Globalvariables.config.get("password"));
 
 	}
 
@@ -101,10 +105,27 @@ public class Commonmethods {
 		String title = driver.getTitle().trim().toLowerCase();
 		System.out.println(title);
 
-		driver.quit();
+		//driver.quit();
 
 		System.out.println(" Successfully Logged out from browser ");
 
+	}
+	
+	public static void login_Into_Application(String userName,String passWord) {
+		
+		WebgenericActions.enterText("xpath", "(//input[@name=\"username\"])[1]", userName);
+		
+		WebgenericActions.enterText("xpath", "(//input[@name=\"password\"])[1]", passWord);
+		
+		WebgenericActions.click("xpath", "//button[@type=\"submit\"]");
+		
+		WebgenericActions.exist("xpath", "(//h6[text()='Dashboard'])[1]");
+		
+		System.out.println(" Successfully Loggedinto application");
+		
+		driver.quit();
+		
+		
 	}
 
 }
