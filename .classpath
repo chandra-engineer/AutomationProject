@@ -7,5 +7,8 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="Jars/selenium-server-4.25.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="Jars/gson-2.11.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="Jars/jackson-databind-2.18.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="Jars/json-20240303.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
