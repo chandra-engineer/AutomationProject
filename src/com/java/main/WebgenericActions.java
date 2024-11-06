@@ -1,59 +1,84 @@
 package com.java.main;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebgenericActions {
 
-	public static WebDriver driver=Commonmethods.driver;;
-
-	
+	public static WebDriver driver = Commonmethods.driver;;
 
 	public static WebElement getElement(String locatorType, String locatorValue) {
 
 		WebElement element = null;
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
 		try {
 			switch (locatorType.trim().toLowerCase()) {
 
 			case "xpath":
 
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locatorValue)));
+				
+				//Specify the timout of the wait
+				
+				wait.withTimeout(Duration.ofSeconds(3));
+				//Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				//Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
+				
 				element = driver.findElement(By.xpath(locatorValue));
 
 				break;
 
 			case "name":
 
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(locatorValue)));
+
 				element = driver.findElement(By.name(locatorValue));
 
 				break;
 
 			case "id":
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(locatorValue)));
 
 				element = driver.findElement(By.id(locatorValue));
 
 				break;
 			case "className":
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(locatorValue)));
 
 				element = driver.findElement(By.className(locatorValue));
 
 				break;
 			case "tagename":
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(locatorValue)));
 
 				element = driver.findElement(By.tagName(locatorValue));
 
 				break;
 			case "cssselector":
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locatorValue)));
 
 				element = driver.findElement(By.cssSelector(locatorValue));
 				break;
 			case "partilalinktext":
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(locatorValue)));
 
 				element = driver.findElement(By.partialLinkText(locatorValue));
 
 				break;
 			case "linktext":
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(locatorValue)));
 
 				element = driver.findElement(By.linkText(locatorValue));
 
@@ -151,10 +176,12 @@ public class WebgenericActions {
 		return bStatus;
 
 	}
-	
-	
-	public static WebElement exist(String locatorType, String locatorValue) {
 
+	public static boolean exist(String locatorType, String locatorValue) {
+
+		boolean bStatus = false;
+
+		
 		WebElement element = null;
 
 		element = getElement(locatorType, locatorValue);
@@ -165,8 +192,9 @@ public class WebgenericActions {
 
 				if (element.isEnabled()) {
 
-					System.out.println("Element is available  Locator Type : " + locatorType
-							+ " Locator value : " + locatorValue);
+					System.out.println(
+							"Element is available  Locator Type : " + locatorType + " Locator value : " + locatorValue);
+					bStatus = true;
 				} else {
 
 					System.out.println(" Element is not Enabled Locator Type : " + locatorType + " Locator value : "
@@ -184,8 +212,34 @@ public class WebgenericActions {
 					+ " Locator value : " + locatorValue);
 		}
 
-		return element;
+		return bStatus;
 
 	}
+	
+	public static boolean hoveronElement(String locatorType, String locatorValue) {
+
+		boolean bStatus = false;
+
+		try {
+
+			WebElement element = createElement(locatorType, locatorValue);
+			
+			Actions act = new Actions(driver);
+			
+			act.moveToElement(element).build().perform();
+			
+
+			System.out.println("Step : Successfully hover to element ");
+
+			bStatus = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return bStatus;
+
+	}
+	
 
 }
