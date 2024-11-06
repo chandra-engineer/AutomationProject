@@ -1,5 +1,7 @@
 package com.java.main;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +18,6 @@ public class Commonmethods {
 		
 		System.out.println("System Execution started ");
 
-		System.out.println("System Execution started 2 ");
 		
 		System.out.println(System.getProperty("os.name"));
 
@@ -95,19 +96,15 @@ public class Commonmethods {
 		driver.get(url);
 
 		System.out.println(" Successfully laucnhed Applicarion : " + url);
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 
 		String title = driver.getTitle().trim().toLowerCase();
 		System.out.println(title);
 
 		//driver.quit();
 
-		System.out.println(" Successfully Logged out from browser ");
+		//System.out.println(" Successfully Logged out from browser ");
 
 	}
 	

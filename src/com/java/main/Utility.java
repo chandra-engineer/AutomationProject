@@ -9,7 +9,10 @@ import java.util.Properties;
 
 public class Utility {
 
-	public static void getPropertiesData(String env) throws Exception {
+	public static HashMap<String, String>getPropertiesData(String env) throws Exception {
+		
+		
+		HashMap<String, String>config=null;
 
 		String envType = "/confgurationEnv.properties";
 
@@ -40,13 +43,16 @@ public class Utility {
 			}
 
 			Globalvariables.config = configData;
+		config=configData;
 
 			System.out.println("Map Data " + configData.toString());
+			
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+			return config;
 
 	}
 
