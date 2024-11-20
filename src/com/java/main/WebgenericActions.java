@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -142,7 +143,7 @@ public class WebgenericActions {
 
 			element.click();
 
-			System.out.println(" User clicked on " + locatorType + " Locator value : " + locatorValue);
+			System.out.println(" User clicked on ---> " +locatorValue);
 
 			bStatus = true;
 
@@ -165,7 +166,7 @@ public class WebgenericActions {
 			element.click();
 			element.sendKeys(input);
 
-			System.out.println(" User entered Value " + input);
+			System.out.println(" User entered Value ---> " + input);
 
 			bStatus = true;
 
@@ -241,5 +242,31 @@ public class WebgenericActions {
 
 	}
 	
+	
+	public static boolean scrollIntoViewElement(String locatorType, String locatorValue) {
+
+		boolean bStatus = false;
+
+		try {
+
+			WebElement element = createElement(locatorType, locatorValue);
+			
+			
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			
+			
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+
+			System.out.println("Step : Successfully scroll to element ");
+
+			bStatus = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return bStatus;
+
+	}
 
 }
