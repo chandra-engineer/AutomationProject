@@ -1,0 +1,26 @@
+{
+	"create_Company_Website": {
+		"company": {
+			"type": "xpath",
+			"value": "(//a[@href=\"/companies\"])[1]"
+		},
+		"company1": {
+			"type": "name",
+			"value": "(//a[@href=\"/companies\"])[1]//following::button[1]"
+		},
+		"loginButton": {
+			"type": "xpath",
+			"value": "//button[@id='login']"
+		}
+	},
+	"homePage": {
+		"searchBox": {
+			"type": "css",
+			"value": "#searchBox"
+		},
+		"profileLink": {
+			"type": "linkText",
+			"value": "Profile"
+		}
+	}
+}
