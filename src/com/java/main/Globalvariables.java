@@ -8,5 +8,9 @@ public class Globalvariables {
 	public static HashMap<String, String>config;
 	
 	
+	public static String TestdataPath=System.getProperty("user.dir")+"/TestData"+"/";
+	
+	
+	
 
 }

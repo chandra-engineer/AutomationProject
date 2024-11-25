@@ -29,16 +29,6 @@ public class Tc_01_Create_CompanyWebsite {
 
 		gen = new WebgenericActions();
 		
-		ExcelUtilities exceldata= new ExcelUtilities();
-		
-		HashMap<String, HashMap<String, String>> testdata=exceldata.readDatafromExcel("/Users/chandrasekhark/Workspace/AutomationProject/TestData/Create Account.xlsx",
-					"Sheet1");
-		
-		HashMap<String, String>currentTestdata=	testdata.get("TC002");
-		
-		String name=currentTestdata.get("First name");
-		
-		System.out.println(name);
 
 		startHere_CRM();
 		Login_Into_Free_CRM_Application(credentialsData.get("Username"), credentialsData.get("password"));

@@ -13,69 +13,82 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.java.main.Globalvariables;
+
 public class ExcelUtilities {
 
-	
-	public  HashMap<String, HashMap<String, String>> readDatafromExcel(String filepath, String sheetName)
+	FileInputStream fis;
+
+	XSSFWorkbook wb;
+
+	XSSFSheet sh;
+
+	public ExcelUtilities(String fileName, String sheetName) {
+
+		String finaleFilepath = Globalvariables.TestdataPath + fileName+".xlsx";
+
+		File f = new File(finaleFilepath);
+
+		try {
+			fis = new FileInputStream(f);
+
+			wb = new XSSFWorkbook(fis);
+
+			sh = wb.getSheet(sheetName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public HashMap<String, HashMap<String, String>> readDatafromExcel()
 			throws Exception {
 
 		HashMap<String, HashMap<String, String>> allrowsData = new HashMap<String, HashMap<String, String>>();
 
 		try {
 
-			File f = new File(filepath);
+			int lastRow = sh.getLastRowNum();
 
-			if (f.exists()) {
+			ArrayList<String> headers = new ArrayList<String>();
 
-				FileInputStream fis = new FileInputStream(f);
+			XSSFRow headersRow = sh.getRow(0);
 
-				XSSFWorkbook wb = new XSSFWorkbook(fis);
+			for (Cell cell : headersRow) {
 
-				XSSFSheet sh = wb.getSheet("Sheet1");
+				headers.add(cell.getStringCellValue());
+			}
 
-				int lastRow = sh.getLastRowNum();
+			for (int l = 1; l <= lastRow; l++) {
 
-				ArrayList<String> headers = new ArrayList<String>();
+				XSSFRow row = sh.getRow(l);
 
-				XSSFRow headersRow = sh.getRow(0);
+				HashMap<String, String> rowData = new HashMap<String, String>();
 
-				for (Cell cell : headersRow) {
+				String testcaseID = null;
 
-					headers.add(cell.getStringCellValue());
+				for (int i = 0; i <= row.getLastCellNum(); i++) {
+
+					if (row.getCell(i) != null) {
+
+						Cell cell = row.getCell(i);
+
+						String values = getCellValue(cell);
+						// System.out.println(values);
+
+						rowData.put(headers.get(i), values);
+
+						if (i == 0) {
+
+							testcaseID = values;
+						}
+					}
+
 				}
 
-				for (int l = 1; l <= lastRow; l++) {
+				if (testcaseID != null) {
 
-					XSSFRow row = sh.getRow(l);
-
-					HashMap<String, String> rowData = new HashMap<String, String>();
-
-					String testcaseID = null;
-
-					for (int i = 0; i <= row.getLastCellNum(); i++) {
-
-						if (row.getCell(i) != null) {
-
-							Cell cell = row.getCell(i);
-
-							String values = getCellValue(cell);
-						//	System.out.println(values);
-
-							rowData.put(headers.get(i), values);
-
-							if (i == 0) {
-
-								testcaseID = values;
-							}
-						}
-
-					}
-
-					if (testcaseID != null) {
-
-						allrowsData.put(testcaseID, rowData);
-
-					}
+					allrowsData.put(testcaseID, rowData);
 
 				}
 
