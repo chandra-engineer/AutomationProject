@@ -11,6 +11,10 @@ public class Globalvariables {
 	public static String TestdataPath=System.getProperty("user.dir")+"/TestData"+"/";
 	
 	
+	public static String locatorsPath=System.getProperty("user.dir")+"/Locators"+"/";
+
+	
+	
 	
 
 }

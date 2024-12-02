@@ -2,8 +2,8 @@ package com.java.utility;
 
 import java.io.File;
 
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 
 public class LocatorReaderXML {
 

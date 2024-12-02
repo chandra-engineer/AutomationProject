@@ -1,0 +1,22 @@
+{
+	"loginPage": {
+		"userName": {
+			"locatorType": "xpath",
+			"locatorValue": "//input[@name='username']"
+		},
+		"password": {
+			"locatorType": "name",
+			"locatorValue": "password"
+		},
+		"loginButton": {
+			"locatorType": "xpath",
+			"locatorValue": "//button[text()=' Login ']"
+		}
+	},
+	"homepage": {
+		"dashboard": {
+			"locatorType": "xpath",
+			"locatorValue": "//h6[text()='Dashboard']"
+		}
+	}
+}

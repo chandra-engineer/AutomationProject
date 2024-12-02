@@ -28,15 +28,15 @@ public class WebgenericActions {
 			case "xpath":
 
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locatorValue)));
-				
-				//Specify the timout of the wait
-				
+
+				// Specify the timout of the wait
+
 				wait.withTimeout(Duration.ofSeconds(3));
-				//Sepcify polling time
+				// Sepcify polling time
 				wait.pollingEvery(Duration.ofMillis(250));
-				//Specify what exceptions to ignore
+				// Specify what exceptions to ignore
 				wait.ignoring(NoSuchElementException.class);
-				
+
 				element = driver.findElement(By.xpath(locatorValue));
 
 				break;
@@ -45,6 +45,12 @@ public class WebgenericActions {
 
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(locatorValue)));
 
+				wait.withTimeout(Duration.ofSeconds(3));
+				// Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				// Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
+
 				element = driver.findElement(By.name(locatorValue));
 
 				break;
@@ -52,34 +58,65 @@ public class WebgenericActions {
 			case "id":
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(locatorValue)));
 
+				wait.withTimeout(Duration.ofSeconds(3));
+				// Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				// Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
+
 				element = driver.findElement(By.id(locatorValue));
 
 				break;
 			case "className":
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(locatorValue)));
+				wait.withTimeout(Duration.ofSeconds(3));
+				// Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				// Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
 
 				element = driver.findElement(By.className(locatorValue));
 
 				break;
 			case "tagename":
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(locatorValue)));
+				wait.withTimeout(Duration.ofSeconds(3));
+				// Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				// Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
 
 				element = driver.findElement(By.tagName(locatorValue));
 
 				break;
 			case "cssselector":
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locatorValue)));
+				wait.withTimeout(Duration.ofSeconds(3));
+				// Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				// Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
 
 				element = driver.findElement(By.cssSelector(locatorValue));
 				break;
 			case "partilalinktext":
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(locatorValue)));
+				wait.withTimeout(Duration.ofSeconds(3));
+				// Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				// Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
 
 				element = driver.findElement(By.partialLinkText(locatorValue));
 
 				break;
 			case "linktext":
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(locatorValue)));
+				wait.withTimeout(Duration.ofSeconds(3));
+				// Sepcify polling time
+				wait.pollingEvery(Duration.ofMillis(250));
+				// Specify what exceptions to ignore
+				wait.ignoring(NoSuchElementException.class);
 
 				element = driver.findElement(By.linkText(locatorValue));
 
@@ -143,7 +180,7 @@ public class WebgenericActions {
 
 			element.click();
 
-			System.out.println(" User clicked on ---> " +locatorValue);
+			System.out.println(" User clicked on ---> " + locatorValue);
 
 			bStatus = true;
 
@@ -182,7 +219,6 @@ public class WebgenericActions {
 
 		boolean bStatus = false;
 
-		
 		WebElement element = null;
 
 		element = getElement(locatorType, locatorValue);
@@ -216,7 +252,7 @@ public class WebgenericActions {
 		return bStatus;
 
 	}
-	
+
 	public static boolean hoveronElement(String locatorType, String locatorValue) {
 
 		boolean bStatus = false;
@@ -224,11 +260,10 @@ public class WebgenericActions {
 		try {
 
 			WebElement element = createElement(locatorType, locatorValue);
-			
+
 			Actions act = new Actions(driver);
-			
+
 			act.moveToElement(element).build().perform();
-			
 
 			System.out.println("Step : Successfully hover to element ");
 
@@ -241,8 +276,7 @@ public class WebgenericActions {
 		return bStatus;
 
 	}
-	
-	
+
 	public static boolean scrollIntoViewElement(String locatorType, String locatorValue) {
 
 		boolean bStatus = false;
@@ -250,11 +284,9 @@ public class WebgenericActions {
 		try {
 
 			WebElement element = createElement(locatorType, locatorValue);
-			
-			
-			JavascriptExecutor js = (JavascriptExecutor)driver;
-			
-			
+
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+
 			js.executeScript("arguments[0].scrollIntoView(true);", element);
 
 			System.out.println("Step : Successfully scroll to element ");
