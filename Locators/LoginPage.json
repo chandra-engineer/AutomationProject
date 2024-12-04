@@ -17,6 +17,42 @@
 		"dashboard": {
 			"locatorType": "xpath",
 			"locatorValue": "//h6[text()='Dashboard']"
+		},
+		"PIM": {
+			"locatorType": "xpath",
+			"locatorValue": "//span[text()='PIM']"
+		}
+	},
+	"generic": {
+		"add": {
+			"locatorType": "xpath",
+			"locatorValue": "(//button[text()=' Add '])[1]"
+		},
+		"save": {
+			"locatorType": "xpath",
+			"locatorValue": "//button[text()=' Save '][1]"
+		}
+	},
+	"addEmployee": {
+		"FirstName": {
+			"locatorType": "xpath",
+			"locatorValue": "//input[@name=\"firstName\"][1]"
+		},
+		"MiddleName": {
+			"locatorType": "xpath",
+			"locatorValue": "//input[@name=\"middleName\"][1]"
+		},
+		"lastName": {
+			"locatorType": "xpath",
+			"locatorValue": "//input[@name=\"lastName\"][1]"
+		},
+		"Nationality": {
+			"locatorType": "xpath",
+			"locatorValue": "//span[text()='#Replace']"
+		},
+		"SelectNationality": {
+			"locatorType": "xpath",
+			"locatorValue": "((//label[text()='Nationality'])[1]//following::div[text()='-- Select --'][1]//following::div[1])[1]"
 		}
 	}
 }
