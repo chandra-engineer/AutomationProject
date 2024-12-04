@@ -16,11 +16,9 @@ public class JsonUtility {
 
 	public JsonUtility(String fileName, String pageName) {
 
-		
 		try {
 			String finaleFilepath = Globalvariables.locatorsPath + fileName + ".json";
 			this.pageName = pageName;
-
 
 			FileInputStream fis = new FileInputStream(new File(finaleFilepath));
 
