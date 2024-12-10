@@ -301,4 +301,88 @@ public class WebgenericActions {
 
 	}
 
+	public static boolean validateTextUsingJs(String locatorType, String locatorValue, String expectedTextValue) {
+
+		boolean bStatus = false;
+
+		try {
+
+			WebElement element = createElement(locatorType, locatorValue);
+
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+
+			String theTextIWant = (String) js.executeScript("return arguments[0].value;", element);
+
+			System.out.println("UI Text : " + theTextIWant);
+
+			if (theTextIWant.toLowerCase().trim().contains(expectedTextValue.toLowerCase().trim())) {
+
+				System.out.println(" Validate Text is equal " + theTextIWant + " = " + expectedTextValue);
+			} else {
+				System.out.println(" Validate Text is not equal " + theTextIWant + " != " + expectedTextValue);
+
+			}
+
+			bStatus = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return bStatus;
+
+	}
+
+	public static boolean validateTextUsing(String locatorType, String locatorValue, String expectedTextValue) {
+
+		boolean bStatus = false;
+
+		try {
+
+			WebElement element = createElement(locatorType, locatorValue);
+
+			String theTextIWant = element.getText().trim().toLowerCase();
+
+			System.out.println("UI Text : " + theTextIWant);
+
+			if (theTextIWant.toLowerCase().trim().contains(expectedTextValue.toLowerCase().trim())) {
+
+				System.out.println(" Validate Text is equal " + theTextIWant + " = " + expectedTextValue);
+			} else {
+				System.out.println(" Validate Text is not equal " + theTextIWant + " != " + expectedTextValue);
+
+			}
+
+			bStatus = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return bStatus;
+
+	}
+
+	public static String getTextUsingJs(String locatorType, String locatorValue) {
+
+		String theTextIWant = null;
+
+		try {
+
+			WebElement element = createElement(locatorType, locatorValue);
+
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+
+			theTextIWant = (String) js.executeScript("return arguments[0].value;", element);
+
+			System.out.println("UI Text : " + theTextIWant);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return theTextIWant.trim();
+
+	}
+
 }
