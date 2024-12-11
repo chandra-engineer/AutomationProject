@@ -2,8 +2,11 @@ package com.java.main;
 
 import java.util.HashMap;
 
+import org.openqa.selenium.WebDriver;
+
 public class Globalvariables {
 	
+	public static WebDriver driver;
 	
 	public static HashMap<String, String>config;
 	

@@ -11,6 +11,7 @@ public class LocatorReader {
 	private String currentPageName;
 
 	/**
+	 * @author chandrasekhar k
 	 * Constructor to initialize JSON file and default page name.
 	 *
 	 * @param filePath Path to the JSON file containing locator data.
@@ -27,6 +28,7 @@ public class LocatorReader {
 	}
 
 	/**
+	 * @author chandrasekhar k
 	 * Method to switch the current page.
 	 *
 	 * @param pageName Name of the page to switch to.
@@ -40,7 +42,7 @@ public class LocatorReader {
 		}
 	}
 
-	/**
+	/**@author chandrasekhar k
 	 * Retrieves the locator type and value for a given locator name on the current
 	 * page.
 	 *

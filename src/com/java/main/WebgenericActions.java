@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebgenericActions {
 
-	public static WebDriver driver = Commonmethods.driver;;
+	public static WebDriver driver = Globalvariables.driver;;
 
 	public static WebElement getElement(String locatorType, String locatorValue) {
 
