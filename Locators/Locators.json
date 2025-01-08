@@ -1,0 +1,26 @@
+{
+    "loginPage": {
+        "usernameField": {
+            "type": "id",
+            "value": "username"
+        },
+        "passwordField": {
+            "type": "name",
+            "value": "password"
+        },
+        "loginButton": {
+            "type": "xpath",
+            "value": "//button[@id='login']"
+        }
+    },
+    "homePage": {
+        "searchBox": {
+            "type": "css",
+            "value": "#searchBox"
+        },
+        "profileLink": {
+            "type": "linkText",
+            "value": "Profile"
+        }
+    }
+}
