@@ -29,6 +29,7 @@ public class LocatorReader {
 
 	/**
 	 * @author chandrasekhar k
+	 * 
 	 * Method to switch the current page.
 	 *
 	 * @param pageName Name of the page to switch to.
