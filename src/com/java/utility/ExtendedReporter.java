@@ -87,7 +87,11 @@ public class ExtendedReporter {
 
 	public void flushReports() {
 		extent.flush();
+		System.out.println("Execution got completed ");
+		System.out.println("Report flush ");
+
 	}
+	
 
 	private String captureScreenshot(String description) {
 		if (driver == null) {
